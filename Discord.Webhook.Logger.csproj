@@ -1,13 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="CSharpDiscordWebhook.NET" Version="2.7.1" />
-    <PackageReference Include="Brazil.DateTime" Version="1.0.0" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+		<PackageId>Discord.Webhook.Logger</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Luiz Santana</Authors>
+		<Description>Use discord webhook to send application logs</Description>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="CSharpDiscordWebhook.NET" Version="2.7.1" />
+		<PackageReference Include="Brazil.DateTime" Version="1.0.0" />
+	</ItemGroup>
 </Project>
