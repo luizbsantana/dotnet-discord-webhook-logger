@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Discord.Webhook.Logger</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <authors>Luiz Santana</authors>
     <owners>Luiz Santana</owners>
     <licenseUrl></licenseUrl>

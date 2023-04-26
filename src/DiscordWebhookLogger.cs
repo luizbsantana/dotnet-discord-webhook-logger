@@ -20,7 +20,7 @@ public class DiscordWebhookLogger : IDiscordWebhookLogger
             Description = message,
             Timestamp = new DiscordTimestamp(DateTime.UtcNow.ToBrazilianTimeZone()),
             Color = new DiscordColor(Color.Blue)
-        });
+        }).Wait();
     }
 
     public void Information(string title, string message, List<EmbedField> embedFields)
@@ -32,7 +32,7 @@ public class DiscordWebhookLogger : IDiscordWebhookLogger
             Timestamp = new DiscordTimestamp(DateTime.UtcNow.ToBrazilianTimeZone()),
             Color = new DiscordColor(Color.Blue),
             Fields = embedFields
-        });
+        }).Wait();
     }
 
     public void Warning(string title, string message)
@@ -43,7 +43,7 @@ public class DiscordWebhookLogger : IDiscordWebhookLogger
             Description = message,
             Timestamp = new DiscordTimestamp(DateTime.UtcNow.ToBrazilianTimeZone()),
             Color = new DiscordColor(Color.Yellow)
-        });
+        }).Wait();
     }
 
     public void Warning(string title, string message, List<EmbedField> embedFields)
@@ -55,7 +55,7 @@ public class DiscordWebhookLogger : IDiscordWebhookLogger
             Timestamp = new DiscordTimestamp(DateTime.UtcNow.ToBrazilianTimeZone()),
             Color = new DiscordColor(Color.Yellow),
             Fields = embedFields
-        });
+        }).Wait();
     }
 
     public void Error(string title, string message)
@@ -66,7 +66,7 @@ public class DiscordWebhookLogger : IDiscordWebhookLogger
             Description = message,
             Timestamp = new DiscordTimestamp(DateTime.UtcNow.ToBrazilianTimeZone()),
             Color = new DiscordColor(Color.Red)
-        });
+        }).Wait();
     }
 
     public void Error(string title, string message, List<EmbedField> embedFields)
@@ -78,7 +78,7 @@ public class DiscordWebhookLogger : IDiscordWebhookLogger
             Timestamp = new DiscordTimestamp(DateTime.UtcNow.ToBrazilianTimeZone()),
             Color = new DiscordColor(Color.Red),
             Fields = embedFields
-        });
+        }).Wait();
     }
 
     public void Error(Exception exception)
@@ -89,7 +89,7 @@ public class DiscordWebhookLogger : IDiscordWebhookLogger
             Timestamp = new DiscordTimestamp(DateTime.UtcNow.ToBrazilianTimeZone()),
             Color = new DiscordColor(Color.Red),
             Fields = GetEmbedFields(exception)
-        });
+        }).Wait();
     }
 
     public void Error(Exception exception, string message)
@@ -101,7 +101,7 @@ public class DiscordWebhookLogger : IDiscordWebhookLogger
             Timestamp = new DiscordTimestamp(DateTime.UtcNow.ToBrazilianTimeZone()),
             Color = new DiscordColor(Color.Red),
             Fields = GetEmbedFields(exception)
-        });
+        }).Wait();
     }
 
     private List<EmbedField> GetEmbedFields(Exception exception)
@@ -114,7 +114,7 @@ public class DiscordWebhookLogger : IDiscordWebhookLogger
             };
     }
 
-    private void SendMessage(DiscordEmbed discordEmbed)
+    private async Task SendMessage(DiscordEmbed discordEmbed)
     {
         var webhook = new DiscordWebhook();
 
@@ -122,7 +122,7 @@ public class DiscordWebhookLogger : IDiscordWebhookLogger
         DiscordMessage message = new();
         message.Embeds.Add(discordEmbed);
 
-        webhook.SendAsync(message);
+        await webhook.SendAsync(message);
     }
 }
 
